@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="main_paragraph_login">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            <div class="errorMsgs">
+                <div class="success" id="success">
+                    <h4> {{messages.success}} </h4>
+                </div>   
+                <div class="error" id="error">
+                    <h4> {{messages.error}} </h4>
+                </div>
+            </div> 
+            <div class="paragraph">
+                <p for="uniqueCode" class="details">Unique code: </p>
+                <input type="text" class="name" placeholder="Enter unique code" name="code" autocomplete="off">
+            </div>
+            <button class="submitBtn" type="submit"> Login </button>
+        </form>
+        <div class="login">
+            <a href="/">Show registration Page</a>
+        </div>
+    </div>
+</div>

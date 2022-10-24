@@ -1,3 +1,27 @@
-<div>
-    
+<div class="container">
+    <div class="main_paragraph">
+        <h2>Register the Waiters</h2>
+        <form action="/register" method="post">
+            <div class="errorMsgs">
+                <div class="success" id="success">
+                    <h4> {{messages.success}} </h4>
+                </div>   
+                <div class="error" id="error">
+                    <h4> {{messages.error}} </h4>
+                </div> 
+            </div>       
+            <div class="paragraph">
+                <p for="firstname" class="details">Firstname: </p>
+                <input type="text" class="name" placeholder="Enter Firstname" name="firstname">
+            </div>
+            <div class="paragraph">
+                <p for="surname" class="details">Surname: </p>
+                <input type="text" class="name" placeholder="Enter Lastname" name="surname">
+            </div>
+            <button class="register" type="submit"> Register </button>
+        </form>
+        <div class="registration">
+            <a href="/login">Show the Login page</a>
+        </div>
+    </div>
 </div>

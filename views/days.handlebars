@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="main_paragraph_days">
+        <form action="/days" method="post">
+            <div class="paragraph">
+                {{#each theWeekDays}}
+                    <input type="checkbox" name="days" value="{{id}}">{{days_of_week}}
+                {{/each}}        
+            </div>
+            {{!-- <table>
+                {{#each}}
+                <tr>
+                    <td>{{firstname}}  {{lastname}}</td>
+                    <td>R{{amount}}</td>
+                    <td>{{expense_date}}</td>
+                    <td>{{description}}</td>
+                </tr>
+                {{/each}}
+            </table> --}}
+            <button class="show" type="submit"> Show days </button>
+        </form>
+        <form action="/delete" method="post">
+            <div class="buttons">
+                <button class="reset btn blue" type="submit">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>

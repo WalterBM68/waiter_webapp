@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="main_paragraph_waiters">
+        <h2>Waiters to choose the days</h2>
+        <form action="/waiters" method="post">
+            <div class="errorMsgs">
+                <div class="success" id="success">
+                    <h4> {{messages.success}} </h4>
+                </div>   
+                <div class="error" id="error">
+                    <h4> {{messages.error}} </h4>
+                </div> 
+            </div>
+            <div class="paragraph">
+                <p for="firstname" class="details">Firstname: </p>
+                <p for="code" class="uniqueCode">{{loginUniqueCode.firstname}} </p>  
+            </div>
+
+            <div class="paragraph">
+                <input type="checkbox" name="Monday" value="Monday" checked> Monday
+                <input type="checkbox" name="Monday" value="Monday" unchecked> Tuesday
+                <input type="checkbox" name="Monday" value="Monday"> Wednesday
+                {{#each theWeekDays}}
+                    <input type="checkbox" name="days" value="{{id}}">{{days_of_week}}
+                {{/each}}        
+            </div>
+            <button class="add" type="submit"> Add days </button>
+        </form>
+    </div>
+</div>
