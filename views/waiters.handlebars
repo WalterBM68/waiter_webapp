@@ -10,20 +10,17 @@
                     <h4> {{messages.error}} </h4>
                 </div> 
             </div>
-            <div class="paragraph">
-                <p for="firstname" class="details">Firstname: </p>
-                <p for="code" class="uniqueCode">{{loginUniqueCode.firstname}} </p>  
+            <div class="paragraph" style="margin-top: 2%;">
+                <p for="firstname" class="details">Waiters Name: </p>
+                <p for="code" class="uniqueCode" name="firstname">{{loginUniqueCode.firstname}} </p>  
             </div>
 
-            <div class="paragraph">
-                <input type="checkbox" name="Monday" value="Monday" checked> Monday
-                <input type="checkbox" name="Monday" value="Monday" unchecked> Tuesday
-                <input type="checkbox" name="Monday" value="Monday"> Wednesday
+            <div class="paragraph" style="color: gray; font-size: 20px;">
                 {{#each theWeekDays}}
                     <input type="checkbox" name="days" value="{{id}}">{{days_of_week}}
-                {{/each}}        
+                {{/each}}       
             </div>
-            <button class="add" type="submit"> Add days </button>
+            <button class="updateDays" type="submit"> Add days </button>
         </form>
     </div>
 </div>

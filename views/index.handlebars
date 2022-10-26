@@ -2,15 +2,15 @@
     <div class="main_paragraph">
         <h2>Register the Waiters</h2>
         <form action="/register" method="post">
-            <div class="errorMsgs">
-                <div class="success" id="success">
+            <div class="errorMsgsRegister">
+                <div class="successReg" id="success">
                     <h4> {{messages.success}} </h4>
                 </div>   
-                <div class="error" id="error">
+                <div class="errorReg" id="error">
                     <h4> {{messages.error}} </h4>
                 </div> 
             </div>       
-            <div class="paragraph">
+            <div class="paragraph" style="margin-top: 2%;">
                 <p for="firstname" class="details">Firstname: </p>
                 <input type="text" class="name" placeholder="Enter Firstname" name="firstname">
             </div>
@@ -20,8 +20,5 @@
             </div>
             <button class="register" type="submit"> Register </button>
         </form>
-        <div class="registration">
-            <a href="/login">Show the Login page</a>
-        </div>
     </div>
 </div>

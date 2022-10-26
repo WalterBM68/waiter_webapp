@@ -1,31 +1,28 @@
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+} 
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
   
-  .topnav {
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .topnav a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  color: white;
+}
 .container {
   display: flex;
   align-items: center;
@@ -38,17 +35,17 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: rgb(132, 99, 99);
+  background-color: #323330;
   padding: 50px 80px;
-  width: 500px;
-  min-height: 360px;
+  width: 550px;
+  min-height: 330px;
   border-radius: 10px;
 }
 .main_paragraph_waiters{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: rgb(132, 99, 99);
+  background-color: #323330;
   padding: 40px 80px;
   width: 800px;
   min-height: 320px;
@@ -58,7 +55,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: rgb(132, 99, 99);
+  background-color: #323330;
   padding: 40px 80px;
   width: 800px;
   min-height: 320px;
@@ -68,7 +65,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: rgb(132, 99, 99);
+  background-color: #323330;
   padding: 20px 70px;
   width: 400px;
   min-height: 240px;
@@ -87,11 +84,14 @@ h2{
   margin-top: -5%;
   margin-bottom: -2%;
 }
-.success{
+.errorMsgsRegister{
+  margin-top: -5.5%;
+}
+.success, .successReg{
   font-size: 20px;
   color: green;
 }
-.error{
+.error, .errorReg{
   font-size: 20px;
   color: red;
 }
@@ -105,6 +105,16 @@ button.register{
   border-radius: 10px;
   width: 100%;
   /* margin-left: 150px; */
+}
+.showBtn, .deleteBtn, .submitBtn, .updateDays{
+  background-color: #40b78c;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 10px;
 }
 input.name{
   border-bottom: 0.1px solid black;
@@ -124,4 +134,15 @@ table{
   border-collapse: collapse;
   font-size: 20px;
   margin: 5px 5px 12px 5px;
+}
+.details{
+  color: gray;
+  font-weight: bold;
+  font-size: 20px;
+}
+.uniqueCode{
+  color: yellowgreen; 
+  margin-right: 72%;
+  font-size: 20px;
+  font-weight: bold;
 }

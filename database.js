@@ -24,8 +24,24 @@ module.exports = function waitersAppDB(db){
     }
     const choosingOfDaysByTheWaiters = async (waitersId, weekDaysId) => {
         for(let i = 0; i < weekDaysId.length; i++){
-            await db.none('insert into waiters_schedule (waiters_id, week_days_id) values ($1, $2);', [waitersId, weekDaysId[i]]);
+            let count = await db.manyOrNone('select count(*) from waiters_schedule where waiters_id = $1 AND week_days_id = $2;', [waitersId, weekDaysId[i]]);
+            let my_counts = count.map(a => a.count);
+            let insertCount = my_counts.toString();
+            if(insertCount == 0 && weekDaysId.length >= 3){
+                await db.none('insert into waiters_schedule (waiters_id, week_days_id) values ($1, $2);', [waitersId, weekDaysId[i]]);
+            }
         }
+    }
+    const filterDays = async (waitersId, weekDaysId) => {
+        let waitersDayArray = [];
+        const theDays = await db.manyOrNone('select waiters_id, week_days_id from waiters_schedule where waiters_id = $1;', [waitersId]);
+        // console.log(theDays);
+        for(let i = 0; i < weekDaysId.length; i++){
+            // waitersDayArray = [];
+            const waitersDays = await db.manyOrNone('select waiters_id, week_days_id from waiters_schedule where waiters_id = $1 AND week_days_id = $2;', [waitersId, weekDaysId[i]]);
+            waitersDayArray.push(waitersDays.toString());
+        }
+        console.log(waitersDayArray);
     }
     const showDays = async (waiterID) => {
         const scheduleOfWaiters = await db.manyOrNone(`select * from waiters_schedule 
@@ -47,6 +63,7 @@ module.exports = function waitersAppDB(db){
         getWaitersDatails,
         getWeekDays,
         choosingOfDaysByTheWaiters,
+        filterDays,
         showDays,
         deleteWaiters
     }

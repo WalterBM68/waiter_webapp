@@ -1,26 +1,33 @@
 <div class="container">
     <div class="main_paragraph_days">
+        <h2>Waiter's Schedule are as follows</h2>
         <form action="/days" method="post">
-            <div class="paragraph">
-                {{#each theWeekDays}}
+            <div class="paragraph" style="color: gray;">
+                <input type="checkbox" name="Monday" value="Monday"> Monday
+                <input type="checkbox" name="Tuesday" value="Tuesday"> Tuesday
+                <input type="checkbox" name="Wednesday" value="Wednesday"> Wednesday
+                <input type="checkbox" name="Thursday" value="Thursday"> Thursday
+                <input type="checkbox" name="Friday" value="Friday"> Friday
+                <input type="checkbox" name="Saturday" value="Saturday"> Saturday
+                <input type="checkbox" name="Sunday" value="Sunday"> Sunday
+
+                {{!-- {{#each theWeekDays}}
                     <input type="checkbox" name="days" value="{{id}}">{{days_of_week}}
-                {{/each}}        
+                {{/each}}         --}}
             </div>
-            {{!-- <table>
-                {{#each}}
+            <table>
+                {{#each showSelectedDays}}
                 <tr>
-                    <td>{{firstname}}  {{lastname}}</td>
-                    <td>R{{amount}}</td>
-                    <td>{{expense_date}}</td>
-                    <td>{{description}}</td>
+                    <td>{{firstname}}</td>
+                    {{!-- <td>{{amount}}</td> --}}
                 </tr>
                 {{/each}}
-            </table> --}}
-            <button class="show" type="submit"> Show days </button>
+            </table>
+            {{!-- <button class="showBtn" type="submit"> Show days </button> --}}
         </form>
         <form action="/delete" method="post">
             <div class="buttons">
-                <button class="reset btn blue" type="submit">Delete</button>
+                <button class="deleteBtn" type="submit">Delete scheduled waiters</button>
             </div>
         </form>
     </div>
