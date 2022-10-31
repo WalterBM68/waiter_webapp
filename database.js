@@ -32,16 +32,14 @@ module.exports = function waitersAppDB(db){
             }
         }
     }
-    const filterDays = async (waitersId, weekDaysId) => {
-        let waitersDayArray = [];
-        const theDays = await db.manyOrNone('select waiters_id, week_days_id from waiters_schedule where waiters_id = $1;', [waitersId]);
-        // console.log(theDays);
-        for(let i = 0; i < weekDaysId.length; i++){
-            // waitersDayArray = [];
-            const waitersDays = await db.manyOrNone('select waiters_id, week_days_id from waiters_schedule where waiters_id = $1 AND week_days_id = $2;', [waitersId, weekDaysId[i]]);
-            waitersDayArray.push(waitersDays.toString());
+    const filterDays = async (waitersId, weekDaysId, waitersName) => {
+        const waiterID = await db.oneOrNone('select id from waiters where firstname = $1;', [waitersName]);
+        const theWeekDays = await db.manyOrNone('select week_days_id from waiters_schedule where waiters_id = $1;', [waiterID.id]);
+        const databaseArray = theWeekDays.map(object => object.week_days_id);
+        let toFilterTheDays = databaseArray.filter(item => !weekDaysId.includes(item.toString()));
+        for(let i = 0; i < toFilterTheDays.length; i++){
+            const waitersDays = await db.none('delete from waiters_schedule where waiters_id = $1 AND week_days_id = $2;', [waitersId, toFilterTheDays[i]]);
         }
-        console.log(waitersDayArray);
     }
     const showDays = async (waiterID) => {
         const scheduleOfWaiters = await db.manyOrNone(`select * from waiters_schedule 

@@ -90,7 +90,7 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
         let waiter = name.charAt(0).toUpperCase() + name.slice(1);
         if(days){
             await waitersAppDB.choosingOfDaysByTheWaiters(waiterId, days);
-            await waitersAppDB.filterDays(waiterId, days);
+            await waitersAppDB.filterDays(waiterId, days, waiter);
             req.flash('success', `Thank you for updating your working days ${waiter}`);
         }else{
             req.flash('error', 'Please select your working days');

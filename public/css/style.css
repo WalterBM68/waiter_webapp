@@ -38,7 +38,7 @@ body {
   background-color: #323330;
   padding: 50px 80px;
   width: 550px;
-  min-height: 330px;
+  min-height: 325px;
   border-radius: 10px;
 }
 .main_paragraph_waiters{
@@ -95,30 +95,34 @@ h2{
   font-size: 20px;
   color: red;
 }
+/* #40b78c; */
 button.register{
-  background-color: #40b78c;
+  background-color: gray;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   border-radius: 10px;
-  width: 100%;
+  font-size: 20px;
+  margin-left: 35%;
+  /* width: 100%; */
   /* margin-left: 150px; */
 }
 .showBtn, .deleteBtn, .submitBtn, .updateDays{
-  background-color: #40b78c;
+  background-color: gray;
   color: white;
   padding: 14px 20px;
   margin: 8px 8px;
   border: none;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 20px;
   border-radius: 10px;
 }
 input.name{
   border-bottom: 0.1px solid black;
-  padding: 5px 10px;
+  padding: 6px 12px;
+  border-radius: 35px;
   margin: 15px 0;
   margin-left: 10px;
   outline: 0.2px solid rgb(0, 0, 0);
