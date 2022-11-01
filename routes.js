@@ -88,27 +88,25 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
         const days = req.body.days;
         let name = req.session.loginUniqueCode.firstname;
         let waiter = name.charAt(0).toUpperCase() + name.slice(1);
-        if(days){
+        if(days.length < 3){
+            req.flash('error', `${waiter} don't select days that are less than 3`);
+        }else if(days.length >= 3 ){
             await waitersAppDB.choosingOfDaysByTheWaiters(waiterId, days);
             await waitersAppDB.filterDays(waiterId, days, waiter);
             req.flash('success', `Thank you for updating your working days ${waiter}`);
         }else{
-            req.flash('error', 'Please select your working days');
+            req.flash('error', `${waiter} Please select your working days`);
         }
         res.redirect('/waiters'); 
     }
     //Admin route(GET route)
     const showSelecetedDays = async (req, res) => {
-        if(!req.session.loginUniqueCode){
-            res.redirect('/login');
-            return;
-        }
-        let waiterName = req.session.loginUniqueCode.id;
-        const showSelectedDays = await waitersAppDB.showDays(waiterName);
+        // let waiterName = req.session.loginUniqueCode.id;
+        const daysOfTheWaiters = await waitersAppDB.ShowWaiterThatSelectedTheDays();
         const theWeekDays = await waitersAppDB.getWeekDays();
         res.render('days',{
-            showSelectedDays,
-            theWeekDays
+            theWeekDays,
+            daysOfTheWaiters
         });
     }
     //Admin route(POST route)
@@ -119,7 +117,7 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
     const deleteScheduledWaiters = async (req, res) => {
         await waitersAppDB.deleteWaiters();
         req.flash('error', 'Waiters schedule days have been deleted');
-        res.redirect('/');
+        res.redirect('/days');
     }
     return{
         showRegistrationScreen,

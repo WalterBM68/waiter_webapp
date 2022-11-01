@@ -38,7 +38,7 @@ body {
   background-color: #323330;
   padding: 50px 80px;
   width: 550px;
-  min-height: 325px;
+  min-height: 315px;
   border-radius: 10px;
 }
 .main_paragraph_waiters{
@@ -117,6 +117,7 @@ button.register{
   border: none;
   cursor: pointer;
   font-size: 20px;
+  margin-left: 35%;
   border-radius: 10px;
 }
 input.name{

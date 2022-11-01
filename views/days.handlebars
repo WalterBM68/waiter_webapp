@@ -3,31 +3,71 @@
         <h2>Waiter's Schedule are as follows</h2>
         <form action="/days" method="post">
             <div class="paragraph" style="color: gray;">
-                <input type="checkbox" name="Monday" value="Monday"> Monday
-                <input type="checkbox" name="Tuesday" value="Tuesday"> Tuesday
-                <input type="checkbox" name="Wednesday" value="Wednesday"> Wednesday
-                <input type="checkbox" name="Thursday" value="Thursday"> Thursday
-                <input type="checkbox" name="Friday" value="Friday"> Friday
-                <input type="checkbox" name="Saturday" value="Saturday"> Saturday
-                <input type="checkbox" name="Sunday" value="Sunday"> Sunday
-
-                {{!-- {{#each theWeekDays}}
-                    <input type="checkbox" name="days" value="{{id}}">{{days_of_week}}
-                {{/each}}         --}}
+                <table>
+                    {{#each theWeekDays}}
+                        <th>
+                            <input type="checkbox" name="days" value="{{id}}">{{days_of_week}}
+                        </th>
+                    {{/each}}  
+                    
+                    <tr>  
+                        <td>     
+                            {{#each daysOfTheWaiters}} 
+                                {{#each Monday}}
+                                    <li>{{this}}</li>
+                                {{/each}}
+                            {{/each}}
+                        </td>
+                        <td>  
+                            {{#each daysOfTheWaiters}}    
+                                {{#each Tuesday}}
+                                    <li>{{this}}</li>
+                                {{/each}}
+                            {{/each}}
+                        </td>
+                        <td>  
+                            {{#each daysOfTheWaiters}}    
+                                {{#each Wednesday}}
+                                    <li>{{this}}</li>
+                                {{/each}}
+                            {{/each}}
+                        </td>
+                        <td> 
+                            {{#each daysOfTheWaiters}}     
+                                {{#each Thursday}}
+                                    <li>{{this}}</li>
+                                {{/each}}
+                            {{/each}}
+                        </td>
+                        <td>  
+                            {{#each daysOfTheWaiters}}    
+                                {{#each Friday}}
+                                    <li>{{this}}</li>
+                                {{/each}}
+                            {{/each}}
+                        </td>
+                        <td>  
+                            {{#each daysOfTheWaiters}}    
+                                {{#each Saturday}}
+                                    <li>{{this}}</li>
+                                {{/each}}
+                            {{/each}}
+                        </td>
+                        <td>  
+                            {{#each daysOfTheWaiters}}    
+                                {{#each Sunday}}
+                                    <li>{{this}}</li>
+                                {{/each}}
+                            {{/each}}
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <table>
-                {{#each showSelectedDays}}
-                <tr>
-                    {{!-- <td>{{firstname}}</td> --}}
-                    {{!-- <td>{{amount}}</td> --}}
-                </tr>
-                {{/each}}
-            </table>
-            {{!-- <button class="showBtn" type="submit"> Show days </button> --}}
+            {{!-- <button class="showBtn" type="submit"> Update days </button> --}}
         </form>
         <form action="/delete" method="post">
             <div class="buttons">
-                <button class="deleteBtn" type="submit">Delete scheduled waiters</button>
+                <button class="deleteBtn" type="submit">Delete waiters</button>
             </div>
         </form>
     </div>
