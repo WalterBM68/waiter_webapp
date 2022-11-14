@@ -2,7 +2,8 @@ CREATE TABLE waiters(
     id serial not null primary key,
     firstname text not null,
     surname text not null,
-    code text not null
+    code text not null,
+    cell_number varchar(10)
 );
 CREATE TABLE week_days(
     id serial not null primary key,

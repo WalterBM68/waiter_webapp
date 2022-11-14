@@ -16,8 +16,8 @@
             </div>
 
             <div class="paragraph" style="color: gray; font-size: 20px;">
-                {{#each theWeekDays}}
-                    <input type="checkbox" name="days" value="{{id}}">{{days_of_week}}
+                {{#each results}}
+                    <input type="checkbox" name="days" value="{{id}}" {{check}}>{{days_of_week}}
                 {{/each}}       
             </div>
             <button class="updateDays" type="submit"> Add days </button>

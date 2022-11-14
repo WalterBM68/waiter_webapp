@@ -33,7 +33,7 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
     }
     //Home route(The POST route)
     const registerTheUser = async (req, res) => {
-        let {firstname, surname} = req.body;
+        let {firstname, surname, numberPhone} = req.body;
         if(firstname && surname){
             firstname = firstname.toLowerCase();
             let waiter = firstname.charAt(0).toUpperCase() + firstname.slice(1);
@@ -43,7 +43,7 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
             if(Number(theWaiter.count) !== 0){
                 req.flash('error', `${waiter} already exists`);
             }else{
-                await waitersAppDB.storeWaitersDetails(waiter, surname, code);
+                await waitersAppDB.storeWaitersDetails(waiter, surname, code, numberPhone);
                 req.flash('success', 'You have registered!!! use this code to login: ' + uniqueCode)
             }
         }else{
@@ -76,41 +76,69 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
             res.redirect('/login');
             return;
         }
+        const waiterId = req.session.loginUniqueCode.id;
         const theWeekDays = await waitersAppDB.getWeekDays();
+        const days = await waitersAppDB.keepTheCheckboxesChecked(waiterId);
+        const results = theWeekDays.map((theWeekDays, index) => 
+            ({...theWeekDays, ...days[index]})
+        );
         res.render('waiters',{
             loginUniqueCode: req.session.loginUniqueCode,
-            theWeekDays
+            results
         });
     }
     //Waiters route(POST route)
     const waitersToChooseWorkingDays = async (req, res) => {
+        if(!req.session.loginUniqueCode){
+            res.redirect('/login');
+            return;
+        }
         const waiterId = req.session.loginUniqueCode.id;
         const days = req.body.days;
         let name = req.session.loginUniqueCode.firstname;
         let waiter = name.charAt(0).toUpperCase() + name.slice(1);
-        if(days.length < 3){
-            req.flash('error', `${waiter} don't select days that are less than 3`);
-        }else if(days.length >= 3 ){
+        if(days !== undefined && days.length < 3){
+            req.flash('error', `${waiter} please select at least the minimum of 3 days`);
+        }
+        if(days !== undefined && days.length >= 3 ){
             await waitersAppDB.choosingOfDaysByTheWaiters(waiterId, days);
             await waitersAppDB.filterDays(waiterId, days, waiter);
             req.flash('success', `Thank you for updating your working days ${waiter}`);
-        }else{
+        }
+        if(!days){
             req.flash('error', `${waiter} Please select your working days`);
         }
         res.redirect('/waiters'); 
     }
     //Admin route(GET route)
     const showSelecetedDays = async (req, res) => {
-        // let waiterName = req.session.loginUniqueCode.id;
-        const daysOfTheWaiters = await waitersAppDB.ShowWaiterThatSelectedTheDays();
+        const waitersNames = await waitersAppDB.getWaitersDatails();
         const theWeekDays = await waitersAppDB.getWeekDays();
+        const daysOfTheWaiters = await waitersAppDB.ShowWaiterThatSelectedTheDays();
+        const daysColor = await waitersAppDB.changeDaysColors();
         res.render('days',{
+            waitersNames,
             theWeekDays,
-            daysOfTheWaiters
+            daysOfTheWaiters,
+            daysColor
         });
     }
     //Admin route(POST route)
     const adminToAddWaitersDays = async (req, res) => {
+        let names = req.body;
+        let update = names.update;
+        let clear = names.clear;
+        if(names.waitersName === '' || names.waitersDays === ''){
+            req.flash('error', 'Please select waiters name & waiters day');
+        }
+        if(update && clear === undefined && !(names.waitersName === '' || names.waitersDays === '')){
+            await waitersAppDB.adminToUpdateWaitersDays(names.waitersName, names.waitersDays);
+            req.flash('success', `You have updated the waiters day`);
+        }
+        if(clear && update === undefined && !(names.waitersName === '' || names.waitersDays === '')){
+            await waitersAppDB.adminToClearWaitersDays(names.waitersName, names.waitersDays);
+            req.flash('error', `You have deleted waiters day`);
+        }
         res.redirect('/days');
     }
     //Delete route

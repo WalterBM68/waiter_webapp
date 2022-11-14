@@ -49,7 +49,7 @@ app.get('/waiters', waiterRoutes.getWaitersPage);
 app.post('/waiters', waiterRoutes.waitersToChooseWorkingDays);
 //days 
 app.get('/days', waiterRoutes.showSelecetedDays);
-// app.post('/days');
+app.post('/days', waiterRoutes.adminToAddWaitersDays);
 //delete
 app.post('/delete', waiterRoutes.deleteScheduledWaiters);
 

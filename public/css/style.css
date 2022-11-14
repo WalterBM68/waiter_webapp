@@ -57,7 +57,6 @@ body {
   justify-content: flex-start;
   background-color: #323330;
   padding: 40px 80px;
-  width: 800px;
   min-height: 320px;
   border-radius: 10px;
 }
@@ -75,6 +74,27 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.paragraph_admin{
+  display: grid;
+}
+.secondParagraphOfAdmin{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+.adminScheduleWaiters{
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0px 0px 0px 60px;
+}
+.nameAndDays{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.addAndDeleteBtns{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 h2{
   color: white;
@@ -106,10 +126,8 @@ button.register{
   border-radius: 10px;
   font-size: 20px;
   margin-left: 35%;
-  /* width: 100%; */
-  /* margin-left: 150px; */
 }
-.showBtn, .deleteBtn, .submitBtn, .updateDays{
+.showBtn,  .submitBtn, .updateDays{
   background-color: gray;
   color: white;
   padding: 14px 20px;
@@ -119,6 +137,42 @@ button.register{
   font-size: 20px;
   margin-left: 35%;
   border-radius: 10px;
+}
+.rescheduleWaiters, .deleteEachWaiter{
+  background-color: gray;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 10px;
+  width: 130px;
+}
+.rescheduleWaiters1, .deleteEachWaiter1{
+  background-color: gray;
+  color: white;
+  padding: 4px 7px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 10px;
+  margin-top: 65px;
+  width: 130px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.deleteBtn{
+  background-color: gray;
+  color: white;
+  padding: 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 10px;
+  translate: 90px;
+  margin-top: 75px;
+}
+.waitersName, .waitersDays{
+  text-align: center;
 }
 input.name{
   border-bottom: 0.1px solid black;
@@ -133,6 +187,25 @@ td, th{
   border: 1px solid;
   align-items: flex-end;
   height: 50%;
+}
+
+.days{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.waitersNames{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 8px;
+  /* padding: 8px; */
+  margin-top: 8px;
+  /* background-color: gray; */
+  border-bottom: none;
+}
+.week{
+  padding: 15px;
+  background-color: #D65A31;
+  margin-bottom: 25px;
 }
 table{
   width: 100%;
@@ -150,4 +223,47 @@ table{
   margin-right: 72%;
   font-size: 20px;
   font-weight: bold;
+}
+.green{
+  background-color: green;
+  font-size: 20px;
+  padding: 10px;
+  margin: 1.5px;
+  text-align: center;
+  color: #EEEEEE;
+  border: none;
+  font-weight: bold;
+}
+.orange{
+  background-color: orange;
+  font-size: 20px;
+  padding: 10px;
+  margin: 1.5px;
+  text-align: center;
+  color: #EEEEEE;
+  border: none;
+  font-weight: bold;
+}
+.red{
+  background-color: red;
+  font-size: 20px;
+  padding: 10px;
+  margin: 1.5px;
+  text-align: center;
+  color: #EEEEEE;
+  border: none;
+  font-weight: bold;
+}
+.demostrationBtn{
+  margin-left: auto;
+  margin-right: auto;
+}
+hr{
+  width: 100%;
+}
+.adminScheduleWaiters, .theMiddleClass{
+  margin-top: 18px;
+}
+.chooseName, .chooseDay{
+  font-size: 18px;
 }

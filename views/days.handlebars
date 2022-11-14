@@ -1,74 +1,78 @@
 <div class="container">
     <div class="main_paragraph_days">
+        <div class="demostrationBtn">
+            <button class="orange" type="submit"> Less than 3 waiters on this day</button>
+            <button class="green" type="submit"> There are 3 waiters on this day</button>
+            <button class="red" type="submit"> More than 3 waiters on this day</button>
+        </div>
         <h2>Waiter's Schedule are as follows</h2>
-        <form action="/days" method="post">
-            <div class="paragraph" style="color: gray;">
-                <table>
-                    {{#each theWeekDays}}
-                        <th>
-                            <input type="checkbox" name="days" value="{{id}}">{{days_of_week}}
-                        </th>
-                    {{/each}}  
-                    
-                    <tr>  
-                        <td>     
-                            {{#each daysOfTheWaiters}} 
-                                {{#each Monday}}
-                                    <li>{{this}}</li>
-                                {{/each}}
-                            {{/each}}
-                        </td>
-                        <td>  
-                            {{#each daysOfTheWaiters}}    
-                                {{#each Tuesday}}
-                                    <li>{{this}}</li>
-                                {{/each}}
-                            {{/each}}
-                        </td>
-                        <td>  
-                            {{#each daysOfTheWaiters}}    
-                                {{#each Wednesday}}
-                                    <li>{{this}}</li>
-                                {{/each}}
-                            {{/each}}
-                        </td>
-                        <td> 
-                            {{#each daysOfTheWaiters}}     
-                                {{#each Thursday}}
-                                    <li>{{this}}</li>
-                                {{/each}}
-                            {{/each}}
-                        </td>
-                        <td>  
-                            {{#each daysOfTheWaiters}}    
-                                {{#each Friday}}
-                                    <li>{{this}}</li>
-                                {{/each}}
-                            {{/each}}
-                        </td>
-                        <td>  
-                            {{#each daysOfTheWaiters}}    
-                                {{#each Saturday}}
-                                    <li>{{this}}</li>
-                                {{/each}}
-                            {{/each}}
-                        </td>
-                        <td>  
-                            {{#each daysOfTheWaiters}}    
-                                {{#each Sunday}}
-                                    <li>{{this}}</li>
-                                {{/each}}
-                            {{/each}}
-                        </td>
-                    </tr>
-                </table>
+        <div class="paragraph_admin" style="color: #EEEEEE;">
+            <div class="errorMsgsRegister">
+                <div class="successReg" id="success">
+                    <h4> {{messages.success}} </h4>
+                </div>   
+                <div class="errorReg" id="error">
+                    <h4> {{messages.error}} </h4>
+                </div> 
+            </div> 
+            <div class="days">
+                {{#each daysColor}}
+                    <div class="{{color}}">{{days_of_week}}</div>
+                {{/each}}
             </div>
-            {{!-- <button class="showBtn" type="submit"> Update days </button> --}}
-        </form>
-        <form action="/delete" method="post">
-            <div class="buttons">
-                <button class="deleteBtn" type="submit">Delete waiters</button>
+            <div class="secondParagraphOfAdmin">
+                <div class="theMiddleClass">
+                    {{#each daysOfTheWaiters}} 
+                    <div class="waitersNames"> 
+                        {{#each this}}
+                            <div>
+                                {{#if @first}}  
+                                    {{firstname}} 
+                                {{/if}} 
+                            </div>
+                            <div>{{days_of_week}} </div>
+                        {{/each}}
+                    </div>   
+                    {{/each}}
+                </div>
+                <form action="/days" method="post">
+                    <div class="adminScheduleWaiters">
+                        <div class="nameAndDays">
+                            <div class="waitersName">
+                                <label for="waitersName" class="chooseName">Choose the name:</label>
+                                <select name="waitersName" class="waitersName">
+                                    <option value="" style="font-size: 16px;">Select the name</option>
+                                    {{#each waitersNames}}
+                                        <option value="{{id}}" name="{{firstname}}" style="font-size: 16px;">{{firstname}}</option>
+                                    {{/each}}
+                                </select>
+                            </div> 
+                            <div class="waitersDays"> 
+                                <label for="waitersDays" class="chooseDay">Choose the day:</label>
+                                <select name="waitersDays" class="waitersDays">
+                                    <option value="" style="font-size: 16px;">Select the day</option>
+                                    {{#each theWeekDays}}
+                                        <option value="{{id}}" style="font-size: 16px;">{{days_of_week}}</option>
+                                    {{/each}} 
+                                </select>
+                            </div>
+                        </div>
+                        <div class="addAndDeleteBtns">
+                            <div class="rescheduleWaiters1"> 
+                                <button class="rescheduleWaiters" name="update" value="update" type="submit">Update</button>
+                            </div> 
+                            <div class="deleteEachWaiter1"> 
+                                <button class="deleteEachWaiter" name="clear" value="clear" type="submit">Clear</button>
+                            </div>
+                </form>
+                            <form action="/delete" method="post">
+                                <div class="buttons">
+                                    <button class="deleteBtn" type="submit">Delete all waiters</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
             </div>
-        </form>
+        </div>   
     </div>
 </div>

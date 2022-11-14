@@ -1,8 +1,5 @@
 <div class="container">
     <div class="main_paragraph">
-    
-        
-    
         <h2>Register the Waiters</h2>
         <form action="/register" method="post">
             <div class="errorMsgsRegister">
@@ -15,11 +12,15 @@
             </div>       
             <div class="paragraph" style="margin-top: 2%;">
                 <p for="firstname" class="details">Firstname: </p>
-                <input type="text" class="name" placeholder="Enter Firstname" name="firstname">
+                <input type="text" class="name" placeholder="Enter Firstname" name="firstname" autocomplete="off">
             </div>
             <div class="paragraph">
                 <p for="surname" class="details">Surname: </p>
-                <input type="text" class="name" placeholder="Enter Lastname" name="surname">
+                <input type="text" class="name" placeholder="Enter Lastname" name="surname" autocomplete="off">
+            </div>
+            <div class="paragraph">
+                <p for="surname" class="details">Cell Number: </p>
+                <input type="tel" class="name" placeholder="Enter phone number" name="numberPhone" autocomplete="off">
             </div>
             <button class="register" type="submit"> Register </button>
         </form>
