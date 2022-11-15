@@ -34,7 +34,7 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
                 req.flash('error', `${waiter} already exists`);
             }else{
                 await waitersAppDB.storeWaitersDetails(waiter, surname, code, numberPhone);
-                req.flash('success', 'You have registered!!! use this code to login: ' + uniqueCode)
+                req.flash('success', "You've registered! use this code to login & save it for future use: " + uniqueCode)
             }
         }else{
             req.flash('error', 'Please enter your Name & Surname to register');
