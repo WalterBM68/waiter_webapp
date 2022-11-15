@@ -38,7 +38,7 @@ describe('Testing Waiters database', function(){
          assert.equal("hyufga", results[0].code);
          assert.equal('0759871456', results[0].cell_number);
          await db.none("delete from waiters;");
-         //second waiter
+         //register second waiter
          assert.equal('Ndofaya', results[1].firstname);
          assert.equal('Ngcobo', results[1].surname);
          assert.equal('gmuyi8', results[1].code);
