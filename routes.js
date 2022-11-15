@@ -11,26 +11,16 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(flash());
-/*
-app.use(function(req, res, next){
-	if(req.path === '/login' || req.path === '/waiters'){
-		next();
-	}else{
-		if(!req.session.loginUniqueCode){
-            res.redirect('/login');
-            return;
-        }
-		next();
-	}
-});
-*/
+
 module.exports = waiterRoutes = (waitersAppDB) =>{
+    
     let uniqueCode = '';
     //Home route(The GET route)
     const showRegistrationScreen = async (req, res) => {
         await waitersAppDB.getWaitersDatails();
         res.render('index');
     }
+    
     //Home route(The POST route)
     const registerTheUser = async (req, res) => {
         let {firstname, surname, numberPhone} = req.body;
@@ -51,10 +41,12 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
         }
         res.redirect('/');
     }
+    
     //Login route(The GET route)
     const getLogingScreen = async (req, res) => {
         res.render('login');
     }
+    
     //Login route(The POST route)
     const logingTheUser = async (req, res) => {
         const {code} = req.body;
@@ -70,6 +62,7 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
             res.render('login');
         }
     }
+
     //Waiters route(GET route)
     const getWaitersPage = async (req, res) => {
         if(!req.session.loginUniqueCode){
@@ -87,12 +80,9 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
             results
         });
     }
+    
     //Waiters route(POST route)
     const waitersToChooseWorkingDays = async (req, res) => {
-        if(!req.session.loginUniqueCode){
-            res.redirect('/login');
-            return;
-        }
         const waiterId = req.session.loginUniqueCode.id;
         const days = req.body.days;
         let name = req.session.loginUniqueCode.firstname;
@@ -110,6 +100,7 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
         }
         res.redirect('/waiters'); 
     }
+    
     //Admin route(GET route)
     const showSelecetedDays = async (req, res) => {
         const waitersNames = await waitersAppDB.getWaitersDatails();
@@ -123,6 +114,7 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
             daysColor
         });
     }
+
     //Admin route(POST route)
     const adminToAddWaitersDays = async (req, res) => {
         let names = req.body;
@@ -141,12 +133,14 @@ module.exports = waiterRoutes = (waitersAppDB) =>{
         }
         res.redirect('/days');
     }
+
     //Delete route
     const deleteScheduledWaiters = async (req, res) => {
         await waitersAppDB.deleteWaiters();
         req.flash('error', 'Waiters schedule days have been deleted');
         res.redirect('/days');
     }
+    
     return{
         showRegistrationScreen,
         registerTheUser,

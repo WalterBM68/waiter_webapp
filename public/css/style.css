@@ -48,7 +48,7 @@ body {
   background-color: #323330;
   padding: 40px 80px;
   width: 800px;
-  min-height: 320px;
+  min-height: 260px;
   border-radius: 10px;
 }
 .main_paragraph_days{
@@ -115,7 +115,6 @@ h2{
   font-size: 20px;
   color: red;
 }
-/* #40b78c; */
 button.register{
   background-color: gray;
   color: white;
@@ -127,7 +126,7 @@ button.register{
   font-size: 20px;
   margin-left: 35%;
 }
-.showBtn,  .submitBtn, .updateDays{
+.showBtn,  .submitBtn{
   background-color: gray;
   color: white;
   padding: 14px 20px;
@@ -136,6 +135,18 @@ button.register{
   cursor: pointer;
   font-size: 20px;
   margin-left: 35%;
+  border-radius: 10px;
+}
+.updateDays{
+  background-color: gray;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 8px;
+  margin-top: 25px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 40%;
   border-radius: 10px;
 }
 .rescheduleWaiters, .deleteEachWaiter{
@@ -168,7 +179,7 @@ button.register{
   cursor: pointer;
   font-size: 20px;
   border-radius: 10px;
-  translate: 90px;
+  translate: 185px;
   margin-top: 75px;
 }
 .waitersName, .waitersDays{
@@ -188,7 +199,6 @@ td, th{
   align-items: flex-end;
   height: 50%;
 }
-
 .days{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -197,9 +207,7 @@ td, th{
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding-bottom: 8px;
-  /* padding: 8px; */
   margin-top: 8px;
-  /* background-color: gray; */
   border-bottom: none;
 }
 .week{
