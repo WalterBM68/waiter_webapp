@@ -14,12 +14,10 @@ body {
   text-decoration: none;
   font-size: 17px;
 }
-  
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
-
 .topnav a.active {
   color: white;
 }
@@ -81,7 +79,6 @@ body {
 .secondParagraphOfAdmin{
   display: grid;
   grid-template-columns: 1fr 1fr;
-
 }
 .adminScheduleWaiters{
   display: grid;

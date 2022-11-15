@@ -18,6 +18,8 @@ CREATE TABLE waiters_schedule(
 );
 
 
+
+
 -- INSERT INTO week_days VALUES(1, 'Monday');
 -- INSERT INTO week_days VALUES(2, 'Tuesday');
 -- INSERT INTO week_days VALUES(3, 'Wednesday');
