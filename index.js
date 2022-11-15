@@ -55,5 +55,5 @@ app.post('/delete', waiterRoutes.deleteScheduledWaiters);
 
 const PORT = process.env.PORT || 9000;
 app.listen(PORT, function(){
-    console.log('The waiters app started at port number:', PORT);
+  console.log('The waiters app started at port number:', PORT);
 });

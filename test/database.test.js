@@ -1,3 +1,4 @@
+/*
 const assert = require('assert');
 const pgPromise = require('pg-promise');
 const pgp = pgPromise();
@@ -184,3 +185,4 @@ describe('Testing Waiters database', function(){
       db.$pool.end
    });
 });
+*/
