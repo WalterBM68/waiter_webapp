@@ -14,10 +14,12 @@ body {
   text-decoration: none;
   font-size: 17px;
 }
+  
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
+
 .topnav a.active {
   color: white;
 }
@@ -46,7 +48,7 @@ body {
   background-color: #323330;
   padding: 40px 80px;
   width: 800px;
-  min-height: 260px;
+  min-height: 320px;
   border-radius: 10px;
 }
 .main_paragraph_days{
@@ -55,6 +57,7 @@ body {
   justify-content: flex-start;
   background-color: #323330;
   padding: 40px 80px;
+  width: 800px;
   min-height: 320px;
   border-radius: 10px;
 }
@@ -72,26 +75,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.paragraph_admin{
-  display: grid;
-}
-.secondParagraphOfAdmin{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.adminScheduleWaiters{
-  display: grid;
-  grid-template-columns: 1fr;
-  margin: 0px 0px 0px 60px;
-}
-.nameAndDays{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.addAndDeleteBtns{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 h2{
   color: white;
@@ -112,6 +95,7 @@ h2{
   font-size: 20px;
   color: red;
 }
+/* #40b78c; */
 button.register{
   background-color: gray;
   color: white;
@@ -121,9 +105,9 @@ button.register{
   cursor: pointer;
   border-radius: 10px;
   font-size: 20px;
-  margin-left: 35%;
+  width: 100%;
 }
-.showBtn,  .submitBtn{
+.showBtn, .deleteBtn, .submitBtn, .updateDays{
   background-color: gray;
   color: white;
   padding: 14px 20px;
@@ -133,54 +117,6 @@ button.register{
   font-size: 20px;
   margin-left: 35%;
   border-radius: 10px;
-}
-.updateDays{
-  background-color: gray;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 8px;
-  margin-top: 25px;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  margin-left: 40%;
-  border-radius: 10px;
-}
-.rescheduleWaiters, .deleteEachWaiter{
-  background-color: gray;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 10px;
-  width: 130px;
-}
-.rescheduleWaiters1, .deleteEachWaiter1{
-  background-color: gray;
-  color: white;
-  padding: 4px 7px;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 10px;
-  margin-top: 65px;
-  width: 130px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.deleteBtn{
-  background-color: gray;
-  color: white;
-  padding: 14px;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 10px;
-  translate: 215px;
-  margin-top: 75px;
-}
-.waitersName, .waitersDays{
-  text-align: center;
 }
 input.name{
   border-bottom: 0.1px solid black;
@@ -192,25 +128,8 @@ input.name{
   width: 180px;
 }
 td, th{
-  border: 1px solid;
   align-items: flex-end;
   height: 50%;
-}
-.days{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-.waitersNames{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-bottom: 8px;
-  margin-top: 8px;
-  border-bottom: none;
-}
-.week{
-  padding: 15px;
-  background-color: #D65A31;
-  margin-bottom: 25px;
 }
 table{
   width: 100%;
@@ -271,4 +190,63 @@ hr{
 }
 .chooseName, .chooseDay{
   font-size: 18px;
+}
+li{
+  list-style-type: none;
+  text-align: center;
+}
+.demostrationBtn{
+  margin-left: auto;
+  margin-right: auto;
+}
+.namesAndDays{
+  display: flex;
+  font-size: 18px;
+  margin-left: 135px;
+}
+.waitersName, .waitersDays{
+  margin: 0px 18px 0px 0px;
+}
+.addAndDeleteBtns{
+  display: flex;
+}
+.rescheduleWaiters{
+  background-color: gray;
+  color: white;
+  padding: 14px 10px;
+  margin: 40px 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 150px;
+  border-radius: 10px;
+}
+.deleteEachWaiter{
+  background-color: gray;
+  color: white;
+  padding: 14px 10px;
+  margin: 40px 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+.theDeleteBtn{
+  background-color: gray;
+  color: white;
+  padding: 14px 10px;
+  margin: 40px 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+.smallParagraph{
+  font-size: 18px; 
+  color:aqua; 
+  margin: 10px 0px 8px 0px;
+  font-weight: bolder;
+  font-style: italic;
 }

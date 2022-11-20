@@ -86,30 +86,64 @@ module.exports = function waitersAppDB(db){
 
     //Show the names of the waiters that selected their working days
     const ShowWaiterThatSelectedTheDays = async () => {
-        try {
-            let theFisrtNameOfWaiter;
-            let allTheNamesOfTheWaiters = [];
-            let theScheduleIDs = await db.manyOrNone('select id from waiters;');
-            const changingArrayToObject = theScheduleIDs.map(object => object.id);
-            for(let i = 0; i < changingArrayToObject.length; i++){
-                theFisrtNameOfWaiter = await db.manyOrNone(`select firstname, days_of_week, week_days_id from waiters join waiters_schedule on waiters.id = waiters_schedule.waiters_id join week_days on waiters_schedule.week_days_id = week_days.id where waiters.id = $1 order by week_days_id asc`, [changingArrayToObject[i]]);  
-                allTheNamesOfTheWaiters.push(theFisrtNameOfWaiter);
+        let allTheNamesOfTheWaiters = [];
+        let waitersWhoSeletedTheirDays = {};
+        let theFisrtNameOfWaiter = await db.manyOrNone(`select firstname, days_of_week, week_days_id from waiters join waiters_schedule on waiters.id = waiters_schedule.waiters_id join week_days on waiters_schedule.week_days_id = week_days.id`);
+        let Monday = [];
+        let Tuesday = [];
+        let Wednesday = [];
+        let Thursday = [];
+        let Friday = [];
+        let Saturday = [];
+        let Sunday = [];
+        theFisrtNameOfWaiter.forEach(element => {
+            if(element.days_of_week === 'Monday'){
+                Monday.push(element.firstname);
             }
-            return allTheNamesOfTheWaiters;  
-        } catch (error) {
-            console.log(error);
+            if(element.days_of_week === 'Tuesday'){
+                Tuesday.push(element.firstname);
+            }
+            if(element.days_of_week === 'Wednesday'){
+                Wednesday.push(element.firstname);
+            }
+            if(element.days_of_week === 'Thursday'){
+                Thursday.push(element.firstname);
+            }
+            if(element.days_of_week === 'Friday'){
+                Friday.push(element.firstname);
+            }
+            if(element.days_of_week === 'Saturday'){
+                Saturday.push(element.firstname);
+            }
+            if(element.days_of_week === 'Sunday'){
+                Sunday.push(element.firstname);
+            }
+        });
+        if(waitersWhoSeletedTheirDays['Monday'] === undefined){
+            waitersWhoSeletedTheirDays['Monday'] = Monday;
         }
+        if(waitersWhoSeletedTheirDays['Tuesday'] === undefined){
+            waitersWhoSeletedTheirDays['Tuesday'] = Tuesday;
+        }
+        if(waitersWhoSeletedTheirDays['Wednesday'] === undefined){
+            waitersWhoSeletedTheirDays['Wednesday'] = Wednesday;
+        }
+        if(waitersWhoSeletedTheirDays['Thursday'] === undefined){
+            waitersWhoSeletedTheirDays['Thursday'] = Thursday;
+        }
+        if(waitersWhoSeletedTheirDays['Friday'] === undefined){
+            waitersWhoSeletedTheirDays['Friday'] = Friday;
+        }
+        if(waitersWhoSeletedTheirDays['Saturday'] === undefined){
+            waitersWhoSeletedTheirDays['Saturday'] = Saturday;
+        }
+        if(waitersWhoSeletedTheirDays['Sunday'] === undefined){
+            waitersWhoSeletedTheirDays['Sunday'] = Sunday;
+        }
+        allTheNamesOfTheWaiters.push(waitersWhoSeletedTheirDays);
+        return allTheNamesOfTheWaiters;
     }
 
-    //Select waiters schedule days
-    const checkWhichWaiterSelectedWhicDays = async () => {
-        try {
-            const waitersAndDays = await db.manyOrNone('select * from waiters_schedule;');
-            return waitersAndDays;    
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
     //Allow the admin to update the waiters days
     const adminToUpdateWaitersDays = async (waitersID, weekDaysId) => {
@@ -168,11 +202,11 @@ module.exports = function waitersAppDB(db){
             let theDaysOfTheWeek;
             let listOfDays = [];
             let daysOfWaiter = await db.manyOrNone('select week_days_id from waiters_schedule where  waiters_id = $1;', [waitersDays]);
+            let selectedDays = daysOfWaiter.map(waiter => waiter.week_days_id);
             let thedays = await db.manyOrNone('select id from week_days;');
-            let selecteddays = daysOfWaiter.map(waiter => waiter.week_days_id);
             let allDays = thedays.map(waiter => waiter.id);
             for(let i = 0; i < allDays.length; i++){
-                theDaysOfTheWeek = selecteddays.includes(allDays[i]) ? 'checked' : 'unchecked';
+                theDaysOfTheWeek = selectedDays.includes(allDays[i]) ? 'checked' : 'unchecked';
                 listOfDays.push(theDaysOfTheWeek);
             }
             let changeArrayToObject = listOfDays.map(check => ({check}));
@@ -187,6 +221,16 @@ module.exports = function waitersAppDB(db){
         try {
             const scheduledDays = await db.manyOrNone('select * from waiters_schedule;');
             return scheduledDays;   
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    //Select waiters schedule days
+    const checkWhichWaiterSelectedWhicDays = async () => {
+        try {
+            const waitersAndDays = await db.manyOrNone('select * from waiters_schedule;');
+            return waitersAndDays;    
         } catch (error) {
             console.log(error);
         }
